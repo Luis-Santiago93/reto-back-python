@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TEMPLATE - BackEnd (API REST)",
+    "description": "Servicios web API REST",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "/api/v1.0",
+      "description": "(Local)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+            }
+        }
+    },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/joke": {
+      "get": {
+        "tags": [
+          "ENDPOINT DE CHISTES"
+        ],
+        "summary": "Buscador de chistes",
+        "responses": {
+          "200": {
+            "description": "Consulta con éxito",
+            "content": {}
+          },
+          "404": {
+            "description": "Registro no encontrado",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/joke/{type}": {
+      "get": {
+        "tags": [
+          "ENDPOINT DE CHISTES"
+        ],
+        "summary": "Buscador de chistes",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Tipo de chiste",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta con éxito",
+            "content": {}
+          },
+          "404": {
+            "description": "Registro no encontrado",
+            "content": {}
+          }
+        }
+      }
+    }
+  }
+}
