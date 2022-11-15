@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "TEMPLATE - BackEnd (API REST)",
+    "title": "Reto - BackEnd (API REST)",
     "description": "Servicios web API REST",
     "version": "1.0"
   },
@@ -13,13 +13,13 @@
   ],
   "components": {
     "securitySchemes": {
-        "bearerAuth": {
-          "type": "http",
-          "scheme": "bearer",
-          "bearerFormat": "JWT"
-            }
-        }
-    },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
   "security": [
     {
       "bearerAuth": []
@@ -42,9 +42,129 @@
             "content": {}
           }
         }
+      },
+      "post": {
+        "tags": [
+          "ENDPOINT DE CHISTES"
+        ],
+        "summary": "Agregar un chiste",
+        "requestBody": {
+          "description": "Chiste",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ENDPOINT DE CHISTES"
+        ],
+        "summary": "Modificar un chiste",
+        "requestBody": {
+          "description": "Chiste",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "descripcion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ENDPOINT DE CHISTES"
+        ],
+        "summary": "Eliminar un registro",
+        "requestBody": {
+          "description": "Chiste",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {}
+          },
+          "404": {
+            "description": "Registro no encontrado",
+            "content": {}
+          }
+        }
       }
     },
-    "/joke/{type}": {
+    "/joke/{id}": {
+      "get": {
+        "tags": [
+          "ENDPOINT DE CHISTES"
+        ],
+        "summary": "Encontrar registro por su identificador",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {}
+          },
+          "404": {
+            "description": "Registro no encontrado",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/joke_type/{type}": {
       "get": {
         "tags": [
           "ENDPOINT DE CHISTES"
@@ -71,6 +191,60 @@
             "content": {}
           }
         }
+      }
+    },
+    "/sumatoria": {
+      "get": {
+        "tags": [
+          "ENDPOINT MATEMÁTICO"
+        ],
+        "summary": "Sumatoria de un numero",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "query",
+            "description": "number",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/minimo_multipo": {
+      "get": {
+          "tags": [
+              "ENDPOINT MATEMÁTICO"
+          ],
+          "summary": "Obtener minimo comun multiplo",
+          "parameters": [
+              {
+                  "name": "numbers[]",
+                  "in": "query",
+                  "description": "numbers",
+                  "style": "form",
+                  "explode": false,
+                  "schema": {
+                      "type": "array",
+                      "items": {
+                          "type": "integer"
+                      }
+                  }
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "Operacion exitosa",
+                  "content": {}
+              }
+          }
       }
     }
   }

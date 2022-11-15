@@ -42,6 +42,25 @@ class RepositoryBase(object):
         finally:
             self.session().close()
 
+    def insert_all(self, items):
+        try:
+            result = []
+            self.session().add_all(items)
+            self.session().commit()
+            for i in items:
+                self.session().refresh(i)
+                item = {}
+                for key, value in i.__dict__.items():
+                    if key != '_sa_instance_state':
+                        item[key] = value
+                result.append(item)
+            return result
+        except Exception as e:
+            self.session().rollback()
+            raise
+        finally:
+            self.session().close()
+
     def delete(self, id):
         try:
             i = self.session().query(self.entity_base).get(id)

@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+from marshmallow import Schema, fields, validate
+import datetime
 
 class DomainBase(ABC):
     def __init__(self):
@@ -22,3 +24,7 @@ class DomainBase(ABC):
     @abstractmethod
     def update(self, item):
         pass
+
+class BaseSchema(Schema):
+    usuario_creacion = fields.String(validate=validate.Length(min=4))
+    usuario_ult_modif = fields.String(validate=validate.Length(min=4))

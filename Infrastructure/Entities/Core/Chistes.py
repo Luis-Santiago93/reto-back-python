@@ -21,7 +21,6 @@ class Chistes(object):
 class chistes_schema(Schema):
     id = fields.Integer()
     descripcion = fields.String(required = True)
-    ind_aplica_seguro = fields.Boolean()
     vigente = fields.Boolean(missing=True)
 
     @post_load

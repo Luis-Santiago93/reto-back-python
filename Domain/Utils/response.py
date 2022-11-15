@@ -15,6 +15,14 @@ def json_response(data=None, success=None, message=''):
         'success': success,
         'message': message
     }
+    
+def json_response_paginador(data=None, success=None, message='',paginador=None):
+    return {
+        'data': data,
+        'success': success,
+        'paginador':paginador,
+        'message': message
+    }
 
 
 def json_error_response(e):

@@ -1,24 +1,19 @@
-# TEMPLATE Backend WebServices RESTful
-
-TEMPLATE Backend WebServices RESTful.
+# Reto Backend WebServices RESTful
 
 ## Instalación Previa
 
 #### Clonar el repositorio
 
-    git clone https://sigsavhsa.ddns.net:70/SIGSA/backend-template-python.git
-​
-#### Se asigna la url del repositorio remoto
-    git remote set-url origin http://["user.name"]:["user.password"]@https://sigsavhsa.ddns.net:70/SIGSA/backend-template-python.git
+    git clone https://github.com/Luis-Santiago93/reto-back-python.git
 
-#### Ubicarse en la carpeta "backend-template-python"
-    cd backend-template-python
+#### Ubicarse en la carpeta "com-dev-productconf-back-python"
+    cd reto-backend
 
 #### Crear entorno virtual
-    python -m venv flaskvenv
+    python -m venv env
 
 #### Activar entorno virtual
-    source flaskvenv\bin\activate
+    source env\bin\activate
 
 #### Desactivar entorno virtual
     deactivate
