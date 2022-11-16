@@ -26,6 +26,7 @@ class LocalConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
 class DevelopmentConfig(Config):
+    CONTEXT_FACTORY = SQLContext
     DEBUG = False
     VERIFY_SSL = False
     WEAPI_CHUCKNORRIS = 'https://api.chucknorris.io/jokes'
